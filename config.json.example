@@ -1,0 +1,22 @@
+{
+	"use_database": "mysql",
+	"discord": {
+		"token": ""
+	},
+	"database": {
+		"name": "database_name",
+		"mysql": {
+			"host": "database host",
+			"user": "database user",
+			"pass": "database pass",
+			"port": 3306
+		},
+		"sqlite": {
+			"file": "file.sqlite"
+		}
+	},
+	"guild": {
+		"guildId": "for deploying slash commands to single guild for testing",
+		"clientId": "for deploying slash commands to single guild for testing"
+	}
+}
