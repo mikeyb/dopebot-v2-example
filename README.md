@@ -1,25 +1,34 @@
-# DiscordJS Bot Template
-
-This template is great for anyone looking to get up and running quickly with a DiscordJS bot.  The command and events are broken out in such a way that make it easy to implement the necessary functionality you desire quickly and easily.
-
-The template works with many database platforms out of the box using Sequelize with included models ready to go for your starter implementation.
+# DopeBot V2
 
 # Requirements
 ## Database
-Supports modern database servers including mysql, postgres, sqlite, etc.
+Supports modern database servers including mysql & sqlite out of the box.
 
 ## NodeJS/Yarn/NPM
 Developed using v16.13.x
+```
+# If you need to run migrations
+npm install -g sequelize-cli
+```
 
 ## Discord Bot token
 https://discord.com/developers/applications/
 
 # Installation
 ```
-git clone git@github.com:mikeyb/discordjs-template.git
-cd discordjs-template
+git clone git@github.com:dopedao/dopebot-v2.git
+cd dopebot-v2
 yarn install
-mv config.json.example config.json
+cp config.json.example config.json
+cp config-db.json.example config-db.json
+```
+## Database Migration
+```
+sequelize db:migrate \
+  --migrations-path ./db/migrations \
+  --models-path ./db/models \
+  --seeders-path ./db/seeders
+  --config ./config-db.json
 ```
 
 # Running
@@ -37,7 +46,4 @@ node bot.js
 Commands & Events are broken out into their respective directories and autoloaded at bot start.
 
 `./events/` contains events emitted by DiscordJS
-  - https://discord.js.org/#/docs/discord.js/stable/class/Client
-
 `./commands/` contains slash commands
-  - https://github.com/mikeyb/discordjs-template/commands/ping.js

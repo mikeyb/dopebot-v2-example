@@ -1,8 +1,13 @@
+
+const Members = require('../db/models/members');
+
 module.exports = {
 
     name: 'guildMemberUpdate',
 	once: false,
-	execute(oldMember, newMember) {
+	async execute(oldMember, newMember) {
+
+        return await Members.updateMember(newMember);
 
 	},
 

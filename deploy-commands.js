@@ -1,3 +1,5 @@
+// USE THIS FILE TO DEPLOY COMMANDS GLOBALLY FOR PRODUCTION USE
+
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
@@ -17,6 +19,6 @@ for (const file of commandFiles) {
 
 const rest = new REST({ version: '9' }).setToken(config.discord.token);
 
-rest.put(Routes.applicationCommands(config.guild.clientId), { body: commands })
+rest.put(Routes.applicationCommands(config.discord.clientId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
 	.catch(console.error);

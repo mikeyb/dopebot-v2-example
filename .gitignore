@@ -1,5 +1,6 @@
 node_modules
 config.json
-idea.txt
+config-db.json
+.plan
 *.mwb
 *.mwb.bak

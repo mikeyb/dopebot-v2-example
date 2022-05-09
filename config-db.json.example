@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "dbuser",
+        "password": "dbpass",
+        "database": "dbname",
+        "host": "dbhost",
+        "dialect": "mysql",
+        "port": 3306
+    },
+    "test": {
+        "username": "dbuser",
+        "password": "dbpass",
+        "database": "dbname",
+        "host": "dbhost",
+        "dialect": "mysql",
+        "port": 3306
+    },
+    "production": {
+        "username": "dbuser",
+        "password": "dbpass",
+        "database": "dbname",
+        "host": "dbhost",
+        "dialect": "mysql",
+        "port": 3306
+    }
+  }

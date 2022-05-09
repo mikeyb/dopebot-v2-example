@@ -6,9 +6,28 @@ const {
     Intents
 } = require('discord.js');
 
-const config   = require('./config.json');
+const config = require('./config.json');
 
-const DB = { Logs, Guilds, Members } = require('./db/models')
+// Necessary Bot Permissions ( 1248494873712 )
+// - Manage Server - Needed for managing invite data
+// - Manage Roles - Auto-role (future features)
+// - Manage Channels - Needed for managing invite data & pinning messages
+// - Manage Webhooks - Advanced functionality (future features)
+// - Read Messages/View Channels - Basic functionality
+// - Manage Events - management of events (future features)
+// - Moderate Members - Ability to mute/timeout users (bot managers)
+// - Send Messages - Basic functionality
+// - Manage Messages - Pin messages, edit pinned messages, etc.
+// - Embed Links - Basic functionality
+// - Attach Files - Basic functionality
+// - Read Message History - Basic functionality
+// - Mention Everyone - announcements, giveaways, etc. (future features)
+// - Use External Emojis - Basic functionality
+// - Use External Stickers - Basic functionality
+// - Add Reactions - Basic functionality
+// - Use Slash Commands - Basic functionality
+// - Connect - Basic functionality
+
 
 // Load Intents
 //
@@ -17,32 +36,20 @@ const client = new Client(
     {
         intents: [
             Intents.FLAGS.GUILDS,
-            Intents.FLAGS.GUILD_BANS,
-            Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-            Intents.FLAGS.GUILD_INTEGRATIONS,
             Intents.FLAGS.GUILD_INVITES,
-            Intents.FLAGS.GUILD_PRESENCES,
             Intents.FLAGS.GUILD_MEMBERS,
             Intents.FLAGS.GUILD_MESSAGES,
             Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-            Intents.FLAGS.GUILD_MESSAGE_TYPING,
             Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
-            Intents.FLAGS.GUILD_VOICE_STATES,
-            Intents.FLAGS.GUILD_WEBHOOKS,
-            Intents.FLAGS.DIRECT_MESSAGES,
-            Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-            Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+            Intents.FLAGS.GUILD_WEBHOOKS
         ]
     }
 );
 
-// Attach DB to client
-client.DB = DB;
-
 // Load Commands
 //
 // ./commands/
-client.commands    = new Collection();
+client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -67,8 +74,6 @@ client.on(
 
         if (!command) return;
 
-        DB.Logs.create({ 'command': command.data.name, 'guild_id': interaction.guild.id, 'user_id': interaction.user.id })
-
         try {
 
             await command.execute(interaction);
@@ -78,9 +83,10 @@ client.on(
             console.error(error);
             await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 
-        }
+        };
 
     }
+
 );
 
 // Load Events

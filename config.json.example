@@ -1,7 +1,9 @@
 {
 	"use_database": "mysql",
 	"discord": {
-		"token": ""
+		"token": "",
+        "guildId": "for deploying slash commands to single guild for testing",
+		"clientId": "for deploying slash commands to single guild for testing"
 	},
 	"database": {
 		"name": "database_name",
@@ -14,9 +16,5 @@
 		"sqlite": {
 			"file": "file.sqlite"
 		}
-	},
-	"guild": {
-		"guildId": "for deploying slash commands to single guild for testing",
-		"clientId": "for deploying slash commands to single guild for testing"
 	}
 }
