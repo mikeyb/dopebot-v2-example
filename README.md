@@ -27,7 +27,7 @@ cp config-db.json.example config-db.json
 sequelize db:migrate \
   --migrations-path ./db/migrations \
   --models-path ./db/models \
-  --seeders-path ./db/seeders
+  --seeders-path ./db/seeders \
   --config ./config-db.json
 ```
 
